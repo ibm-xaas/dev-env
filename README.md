@@ -1,4 +1,6 @@
 # dev-env
+##
+tested in Ubuntu 18.04 and macOS Big Sur
 
 ## Available Tools
 ```

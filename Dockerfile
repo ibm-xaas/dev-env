@@ -8,7 +8,7 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 	useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 LABEL "maintainer"="SeungYeop Yang"
-ARG WDIR=/dev-env
+ENV WORKDIR=/dev-env
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Central
@@ -136,4 +136,4 @@ RUN set -ex && \
 
 RUN echo 'alias k="kubectl"' >> ~/.bashrc
 
-WORKDIR ${WDIR}
+WORKDIR $WORKDIR
