@@ -2,6 +2,8 @@
 
 ## Available Tools
 ```
+ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
+ubuntu@57e2d9ce6b3a:/dev-env$
 ubuntu@0519f2c1c374:/dev-env$ k version
 Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.7", GitCommit:"1f86634ff08f37e54e8bfcd86bc90b61c98f84d4", GitTreeState:"clean", BuildDate:"2021-11-17T14:41:19Z", GoVersion:"go1.16.10", Compiler:"gc", Platform:"linux/amd64"}
 The connection to the server localhost:8080 was refused - did you specify the right host or port?
