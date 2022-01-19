@@ -32,5 +32,8 @@ ansible [core 2.12.1]
   libyaml = True
 ubuntu@0519f2c1c374:/dev-env$ ic --version
 ibmcloud version 2.3.0+26fbf88-2021-12-09T17:14:46+00:00
-ubuntu@0519f2c1c374:/dev-env$
+ubuntu@57e2d9ce6b3a:/dev-env$ qemu-img -V
+qemu-img version 4.2.1 (Debian 1:4.2-3ubuntu6.19)
+Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
+ubuntu@57e2d9ce6b3a:/dev-env$
 ```
