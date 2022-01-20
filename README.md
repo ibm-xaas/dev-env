@@ -5,7 +5,7 @@ tested in Ubuntu 18.04 and macOS Big Sur
 ## PREP
 
 ```
-export WORKDIR=`pwd`
+
 ```
 
 ## Available Tools
