@@ -9,6 +9,15 @@ tested in Ubuntu 18.04 and macOS Big Sur
 ```
 
 ## Available Tools
+* terraform and tfenv
+* terragrunt and tgenv
+* packer and pkenv
+* python and pyenv
+* ansible
+* docker and docker-compose
+* ibmcloud cli
+* qemu and qemu-tools
+
 ```
 ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
 ubuntu@57e2d9ce6b3a:/dev-env$
