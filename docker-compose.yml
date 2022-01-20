@@ -12,8 +12,7 @@ services:
     privileged: true
     build:
       context: .
-    image: ghcr.io/ibm-xaas/dev-env:main
-    #image: dev-u20.04:latest
+    image: ghcr.io/ibm-xaas/dev-env:latest
     volumes:
       # For future ssh use in development
       - ~/.ssh:/home/ubuntu/.ssh:ro
@@ -25,8 +24,7 @@ services:
     privileged: true
     build:
       context: .
-    image: ghcr.io/ibm-xaas/dev-env:main
-    #image: dev-u20.04:latest
+    image: ghcr.io/ibm-xaas/dev-env:latest
     volumes:
       # For future ssh use in development
       - ~/.ssh:/home/ubuntu/.ssh:ro
