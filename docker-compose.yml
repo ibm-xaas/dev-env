@@ -1,12 +1,26 @@
 # if you want to try the docker as your development env:
 # Prerequisite if you want to run TF or CLI:
 #     export IBMCLOUD_API_KEY=<YOURS>
+# optional:
 #     export WORKDIR="/$(basename $(pwd))"
+##########################################################
 # Run:
 #   docker-compose run dev-env
 version: "3.3"
 services:
   dev-env:
+    privileged: true
+    build:
+      context: .
+    image: dev-u20.04:latest
+    volumes:
+      # For future ssh use in development
+      - ~/.ssh:/home/ubuntu/.ssh:ro
+      - .:/dev-env
+    environment:
+      IBMCLOUD_API_KEY: "$IBMCLOUD_API_KEY"
+    working_dir: /dev-env
+  dev-env-workdir:
     privileged: true
     build:
       context: .
