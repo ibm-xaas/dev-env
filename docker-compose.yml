@@ -17,6 +17,7 @@ services:
       # For future ssh use in development
       - ~/.ssh:/home/ubuntu/.ssh:ro
       - .:/dev-env
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       IBMCLOUD_API_KEY: "$IBMCLOUD_API_KEY"
     working_dir: /dev-env
