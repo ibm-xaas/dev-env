@@ -137,8 +137,8 @@ RUN set -ex && \
 RUN echo 'alias k="kubectl"' >> ~/.bashrc
 
 RUN set -ex && \
-	curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss && \
-	chmod +rx /usr/local/bin/goss && \
+	sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss && \
+	sudo chmod +rx /usr/local/bin/goss && \
 	cd ${HOME} && \
 	mkdir -p ${HOME}/.packer.d/plugins && \
 	cd ${HOME}/.packer.d/plugins && \
