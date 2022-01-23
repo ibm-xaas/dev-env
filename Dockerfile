@@ -136,4 +136,13 @@ RUN set -ex && \
 
 RUN echo 'alias k="kubectl"' >> ~/.bashrc
 
+RUN set -ex && \
+	curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss && \
+	chmod +rx /usr/local/bin/goss && \
+	cd ${HOME} && \
+	mkdir -p ${HOME}/.packer.d/plugins && \
+	cd ${HOME}/.packer.d/plugins && \
+	wget https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.2/packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
+	unzip packer-provisioner-goss-v3.1.2-linux-amd64.zip
+
 WORKDIR $WORKDIR
