@@ -1,3 +1,5 @@
+[![Docker](https://github.com/ibm-xaas/dev-env/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/ibm-xaas/dev-env/actions/workflows/docker-publish.yml)
+
 # dev-env
 ##
 tested in Ubuntu 18.04 and macOS Big Sur
