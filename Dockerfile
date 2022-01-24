@@ -37,7 +37,6 @@ RUN set -ex && \
 	qemu-system-x86 \
 	cloud-image-utils \
 	graphviz \
-	golang \
 	sudo && \
 	apt-get upgrade -y \
 	e2fsprogs \
@@ -55,21 +54,16 @@ ENV HOME "/home/${USERNAME}"
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
 
-# replaced manual install of golang with apt package installation 1.13.8
-# # golang 1.13
-# RUN set -ex && \
-#     cd ${HOME} && \
-#     wget https://dl.google.com/go/go1.13.9.linux-amd64.tar.gz && \
-#     sudo tar xzf go1.13.9.linux-amd64.tar.gz && \
-#     rm go1.13.9.linux-amd64.tar.gz && \
-#     sudo mv go /usr/local/go-1.13 && \
-#     mkdir -p ${HOME}/go && \
-#     mkdir -p ${HOME}/.terraform.d/plugins && \
-#     sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
-#     sudo chown ${USER_UID}:${USER_GID} ${HOME}/.terraform.d/plugins
-#
-# ENV GOROOT=/usr/local/go-1.13
-# #ENV GOPATH=${HOME}/go
+# # golang 1.17.6
+RUN set -ex && \
+	cd ${HOME} && \
+	wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
+	sudo tar -C /usr/local xvzf go1.17.6.linux-amd64.tar.gz && \
+	rm go1.17.6.linux-amd64.tar.gz && \
+	mkdir -p ${HOME}/go && \
+	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
+	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+
 
 # tfenv
 RUN set -ex && \
