@@ -57,8 +57,8 @@ ENV LANG "en_US.UTF-8"
 # # golang 1.17.6
 RUN set -ex && \
 	cd ${HOME} && \
-	wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
-	sudo tar -C /usr/local xvzf go1.17.6.linux-amd64.tar.gz && \
+	wget -q https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
+	sudo tar -C /usr/local -xvzf go1.17.6.linux-amd64.tar.gz && \
 	rm go1.17.6.linux-amd64.tar.gz && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
@@ -136,7 +136,7 @@ RUN set -ex && \
 	cd ${HOME} && \
 	mkdir -p ${HOME}/.packer.d/plugins && \
 	cd ${HOME}/.packer.d/plugins && \
-	wget https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.2/packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
+	wget -q https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.2/packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
 	unzip packer-provisioner-goss-v3.1.2-linux-amd64.zip
 
 WORKDIR $WORKDIR
