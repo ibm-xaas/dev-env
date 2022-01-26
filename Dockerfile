@@ -63,7 +63,7 @@ RUN set -ex && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
-
+ENV PATH=/usr/local/go/bin:$PATH
 
 # tfenv
 RUN set -ex && \
