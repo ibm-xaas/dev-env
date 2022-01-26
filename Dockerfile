@@ -146,7 +146,7 @@ RUN set -ex && \
 	cd ${HOME} && \
 	git clone https://github.com/ibm-xaas/packer-provisioner-comment.git && \
 	cd packer-provisioner-comment && \
-	go mod init main && \
+	#go mod init main && \
 	go build && \
 	mv main ${HOME}/.packer.d/plugins/packer-plugin-comment
 
