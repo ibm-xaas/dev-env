@@ -144,7 +144,7 @@ RUN set -ex && \
 
 RUN set -ex && \
 	cd ${HOME} && \
-	git clone git@github.com:ibm-xaas/packer-provisioner-comment.git && \
+	git clone https://github.com/ibm-xaas/packer-provisioner-comment.git && \
 	cd packer-provisioner-comment && \
 	go mod init main && \
 	go build && \
