@@ -68,12 +68,10 @@ ENV LANG "en_US.UTF-8"
 # goenv
 ENV GOENV_ROOT "$HOME/.goenv"
 ENV PATH "${HOME}/.goenv/bin:$PATH"
+RUN echo 'eval "$(goenv init -)"' >> ~/.bashrc
 RUN set -ex && \
 	cd ${HOME} && \
-	git clone https://github.com/syndbg/goenv.git ~/.goenv && \
-	echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.bashrc && \
-	echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
-	RUN echo 'eval "$(goenv init -)"' >> ~/.bashrc
+	git clone https://github.com/syndbg/goenv.git ~/.goenv
 
 # pyenv
 ENV PYENV_ROOT "${HOME}/.pyenv"
