@@ -55,15 +55,31 @@ ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
 
 # # golang 1.17.6
+#RUN set -ex && \
+#	cd ${HOME} && \
+#	wget -q https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
+#	sudo tar -C /usr/local -xvzf go1.17.6.linux-amd64.tar.gz && \
+#	rm go1.17.6.linux-amd64.tar.gz && \
+#	mkdir -p ${HOME}/go && \
+#	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
+#	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+
+
+# goenv
+ENV GOENV_ROOT "$HOME/.goenv"
+ENV PATH "${HOME}/.goenv/bin:$PATH"
 RUN set -ex && \
 	cd ${HOME} && \
-	wget -q https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
-	sudo tar -C /usr/local -xvzf go1.17.6.linux-amd64.tar.gz && \
-	rm go1.17.6.linux-amd64.tar.gz && \
-	mkdir -p ${HOME}/go && \
-	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
-	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+	git clone https://github.com/syndbg/goenv.git ~/.goenv && \
+	echo 'export GOENV_ROOT="$HOME/.goenv"' >> ~/.bashrc && \
+	echo 'export PATH="$GOENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
+	RUN echo 'eval "$(goenv init -)"' >> ~/.bashrc
 
+# pyenv
+ENV PYENV_ROOT "${HOME}/.pyenv"
+ENV PATH "${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
+RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
 # tfenv
 RUN set -ex && \
@@ -86,9 +102,11 @@ RUN set -ex && \
 	tfenv install latest && \
 	tgenv install latest && \
 	pkenv install latest && \
+	goenv install latest && \
 	tfenv use latest && \
 	tgenv use latest && \
-	pkenv use latest
+	pkenv use latest && \
+	goenv use latest
 
 # ibmcloud cli client
 # ibmcloud cli client installs docker
@@ -105,11 +123,6 @@ RUN set -ex && \
 	sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
 
-# pyenv
-ENV PYENV_ROOT "${HOME}/.pyenv"
-ENV PATH "${HOME}/.pyenv/shims:${HOME}/.pyenv/bin:${PATH}"
-RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 # COPY requirements.txt ${HOME}/requirements.txt
 #
