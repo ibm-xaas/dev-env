@@ -137,6 +137,17 @@ RUN set -ex && \
 	mkdir -p ${HOME}/.packer.d/plugins && \
 	cd ${HOME}/.packer.d/plugins && \
 	wget -q https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.2/packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
-	unzip packer-provisioner-goss-v3.1.2-linux-amd64.zip
+	unzip packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
+	rm -f packer-provisioner-goss-v3.1.2-linux-amd64.zip
+
+# git@github.com:ibm-xaas/packer-provisioner-comment.git
+
+RUN set -ex && \
+	cd ${HOME} && \
+	git clone git@github.com:ibm-xaas/packer-provisioner-comment.git && \
+	cd packer-provisioner-comment && \
+	go mod init main && \
+	go build && \
+	mv main ${HOME}/.packer.d/plugins/packer-plugin-comment
 
 WORKDIR $WORKDIR
