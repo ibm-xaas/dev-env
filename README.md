@@ -23,8 +23,8 @@ Please install the items below:
 * golang 1.17 or later
 * docker-in-docker
 * packer plugins: 
-**  goss, 
-** [comment](https://github.com/ibm-xaas/packer-provisioner-comment)
+  * goss, 
+  * [comment](https://github.com/ibm-xaas/packer-provisioner-comment)
 
 ![image](https://user-images.githubusercontent.com/67604276/151308353-6a7bc34c-6ab1-404e-96b1-eb4738307c09.png)
 
