@@ -6,9 +6,9 @@ tested in Ubuntu 18.04 and macOS Big Sur
 
 ## PREP
 
-```
-
-```
+Please install the items below:
+* docker
+* docker-compose
 
 ## Available Tools
 * terraform and tfenv
