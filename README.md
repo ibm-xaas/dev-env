@@ -14,11 +14,12 @@ Please install the items below:
 * terraform and tfenv
 * terragrunt and tgenv
 * packer and pkenv
-* python and pyenv
+* python 3.9 or later and pyenv
 * ansible
 * docker and docker-compose
 * ibmcloud cli
 * qemu and qemu-tools
+* golang 1.17 or later
 
 ```
 ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
