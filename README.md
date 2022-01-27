@@ -20,6 +20,7 @@ Please install the items below:
 * ibmcloud cli latest
 * qemu and qemu-tools
 * golang 1.17 or later
+* docker-in-docker
 
 ```
 ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
