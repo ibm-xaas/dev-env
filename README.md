@@ -21,6 +21,7 @@ Please install the items below:
 * qemu and qemu-tools
 * golang 1.17 or later
 * docker-in-docker
+* packer plugins: goss, comment
 
 ```
 ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
