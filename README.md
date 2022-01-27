@@ -17,7 +17,7 @@ Please install the items below:
 * packer latest and pkenv
 * python 3.9 or later and pyenv
 * ansible latest
-* docker or docker-ce and docker-compose
+* docker-ce and docker-compose
 * ibmcloud cli latest
 * qemu and qemu-tools
 * golang 1.17 or later
