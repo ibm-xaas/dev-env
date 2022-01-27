@@ -11,6 +11,7 @@ Please install the items below:
 * docker-compose
 
 ## Available Tools
+* ubuntu focal (20.04) base
 * terraform latest and tfenv
 * terragrunt latest and tgenv
 * packer latest and pkenv
