@@ -11,13 +11,13 @@ Please install the items below:
 * docker-compose
 
 ## Available Tools
-* terraform and tfenv
-* terragrunt and tgenv
-* packer and pkenv
+* terraform latest and tfenv
+* terragrunt latest and tgenv
+* packer latest and pkenv
 * python 3.9 or later and pyenv
-* ansible
-* docker and docker-compose
-* ibmcloud cli
+* ansible latest
+* docker or docker-ce and docker-compose
+* ibmcloud cli latest
 * qemu and qemu-tools
 * golang 1.17 or later
 
