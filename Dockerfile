@@ -63,7 +63,12 @@ RUN set -ex && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
-ENV PATH=/usr/local/go/bin:$PATH
+ENV PATH=$HOME:/go/bin:/usr/local/go/bin:$PATH
+
+# golangci-lint 1.44.0
+RUN set -ex && \
+	cd ${HOME} && \
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.44.0
 
 # tfenv
 RUN set -ex && \
