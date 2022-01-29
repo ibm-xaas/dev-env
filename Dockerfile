@@ -63,7 +63,7 @@ RUN set -ex && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
-ENV PATH=$HOME:/go/bin:/usr/local/go/bin:$PATH
+ENV PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
 
 # golangci-lint 1.44.0
 RUN set -ex && \
