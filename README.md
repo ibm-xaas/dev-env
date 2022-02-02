@@ -22,9 +22,10 @@ Please install the items below:
 * qemu and qemu-tools
 * golang 1.17 or later
 * docker-in-docker
-* packer plugins: 
+* packer plugins:
   * [packer-provisioner-goss](https://github.com/YaleUniversity/packer-provisioner-goss) : the details on [goss](https://github.com/aelsabbahy/goss)
   * [packer-provisioner-comment](https://github.com/ibm-xaas/packer-provisioner-comment)
+* nvm and cdktf-cli
 
 ![image](https://user-images.githubusercontent.com/67604276/151308353-6a7bc34c-6ab1-404e-96b1-eb4738307c09.png)
 
