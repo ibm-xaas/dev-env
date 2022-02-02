@@ -15,7 +15,7 @@ Please install the items below:
 * terraform latest and tfenv
 * terragrunt latest and tgenv
 * packer latest and pkenv
-* python 3.9 or later and pyenv
+* python 3.9 or later and pyenv, then pipenv
 * ansible latest
 * docker-ce and docker-compose
 * ibmcloud cli latest
@@ -25,7 +25,8 @@ Please install the items below:
 * packer plugins:
   * [packer-provisioner-goss](https://github.com/YaleUniversity/packer-provisioner-goss) : the details on [goss](https://github.com/aelsabbahy/goss)
   * [packer-provisioner-comment](https://github.com/ibm-xaas/packer-provisioner-comment)
-* nvm and cdktf-cli
+* node lts and nvm
+* cdktf-cli
 
 ![image](https://user-images.githubusercontent.com/67604276/151308353-6a7bc34c-6ab1-404e-96b1-eb4738307c09.png)
 
