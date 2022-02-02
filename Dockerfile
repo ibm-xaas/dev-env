@@ -124,7 +124,8 @@ RUN set -ex && \
 	pyenv global 3.9.10 && \
 	pip install --upgrade pip && \
 	# Ansible
-	pip install ansible
+	pip install ansible && \
+	pip install pipenv
 # pip install -r ${HOME}/requirements.txt && \
 # rm ${HOME}/requirements.txt && \
 
@@ -154,5 +155,17 @@ RUN set -ex && \
 	#go mod init main && \
 	go build && \
 	mv main ${HOME}/.packer.d/plugins/packer-plugin-comment
+
+# nvm and node
+RUN set -ex && \
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+ENV NVM_DIR "${HOME}/.nvm"
+# nvm and node
+RUN set -ex && \
+	. $NVM_DIR/nvm.sh && \
+	nvm install --lts && \
+	nvm use --lts && \
+	npm install -g cdktf-cli@latest
 
 WORKDIR $WORKDIR
