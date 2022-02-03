@@ -37,6 +37,10 @@ RUN set -ex && \
 	qemu-system-x86 \
 	cloud-image-utils \
 	graphviz \
+	expect \
+	nmap \
+	traceroute \
+	tcpdump \
 	sudo && \
 	apt-get upgrade -y \
 	e2fsprogs \
