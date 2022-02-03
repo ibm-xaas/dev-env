@@ -166,6 +166,7 @@ RUN set -ex && \
 	. $NVM_DIR/nvm.sh && \
 	nvm install --lts && \
 	nvm use --lts && \
-	npm install -g cdktf-cli@latest
+	npm install -g cdktf-cli@latest && \
+	npm install -g typescript@latest
 
 WORKDIR $WORKDIR
