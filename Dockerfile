@@ -37,6 +37,10 @@ RUN set -ex && \
 	qemu-system-x86 \
 	cloud-image-utils \
 	graphviz \
+	expect \
+	nmap \
+	traceroute \
+	tcpdump \
 	sudo && \
 	apt-get upgrade -y \
 	e2fsprogs \
@@ -158,15 +162,25 @@ RUN set -ex && \
 
 # nvm and node
 RUN set -ex && \
+	cd ${HOME} && \
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 ENV NVM_DIR "${HOME}/.nvm"
 # nvm and node
 RUN set -ex && \
+	cd ${HOME} && \
 	. $NVM_DIR/nvm.sh && \
 	nvm install --lts && \
 	nvm use --lts && \
 	npm install -g cdktf-cli@latest && \
 	npm install -g typescript@latest
+
+# awscli v2
+RUN set -ex && \
+	cd ${HOME} && \
+	curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip && \
+	unzip awscliv2.zip && \
+	sudo ./aws/install && \
+	rm -f awscliv2.zip
 
 WORKDIR $WORKDIR
