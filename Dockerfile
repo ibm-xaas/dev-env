@@ -162,11 +162,13 @@ RUN set -ex && \
 
 # nvm and node
 RUN set -ex && \
+	cd ${HOME} && \
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 ENV NVM_DIR "${HOME}/.nvm"
 # nvm and node
 RUN set -ex && \
+	cd ${HOME} && \
 	. $NVM_DIR/nvm.sh && \
 	nvm install --lts && \
 	nvm use --lts && \
@@ -175,6 +177,7 @@ RUN set -ex && \
 
 # awscli v2
 RUN set -ex && \
+	cd ${HOME} && \
 	curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip && \
 	unzip awscliv2.zip && \
 	sudo ./aws/install && \
