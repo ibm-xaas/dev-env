@@ -103,13 +103,14 @@ RUN set -ex && \
 # ibmcloud cli client installs docker
 RUN set -ex && \
 	cd ${HOME} && \
-	sudo curl -sL https://ibm.biz/idt-installer | bash && \
-	sudo ibmcloud plugin install vpc-infrastructure -f && \
-	sudo ibmcloud plugin install cloud-object-storage -f && \
-	sudo ibmcloud plugin install key-protect && \
-	sudo ibmcloud plugin install tke && \
-	sudo ibmcloud plugin install container-service && \
-	sudo ibmcloud plugin install container-registry && \
+	curl -sL https://ibm.biz/idt-installer | bash && \
+	ibmcloud plugin install vpc-infrastructure -f && \
+	ibmcloud plugin install cloud-object-storage -f && \
+	ibmcloud plugin install key-protect -f && \
+	ibmcloud plugin install tke -f && \
+	ibmcloud plugin install container-service -f && \
+	ibmcloud plugin install container-registry -f && \
+	ibmcloud plugin install observe-service -f && \
 	# docker-compose 1.25.5
 	sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
@@ -129,7 +130,8 @@ RUN set -ex && \
 	pip install --upgrade pip && \
 	# Ansible
 	pip install ansible && \
-	pip install pipenv
+	pip install pipenv && \
+	pip install pre-commit
 # pip install -r ${HOME}/requirements.txt && \
 # rm ${HOME}/requirements.txt && \
 
@@ -182,5 +184,11 @@ RUN set -ex && \
 	unzip awscliv2.zip && \
 	sudo ./aws/install && \
 	rm -f awscliv2.zip
+
+# azure cli
+RUN set -ex && \
+	cd ${HOME} && \
+	sudo apt remove azure-cli -y && sudo apt autoremove -y && \
+	curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 WORKDIR $WORKDIR
