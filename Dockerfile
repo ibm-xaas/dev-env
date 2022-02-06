@@ -130,7 +130,8 @@ RUN set -ex && \
 	pip install --upgrade pip && \
 	# Ansible
 	pip install ansible && \
-	pip install pipenv
+	pip install pipenv && \
+	pip install pre-commit
 # pip install -r ${HOME}/requirements.txt && \
 # rm ${HOME}/requirements.txt && \
 
