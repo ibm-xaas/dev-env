@@ -186,6 +186,7 @@ RUN set -ex && \
 # azure cli
 RUN set -ex && \
 	cd ${HOME} && \
+	sudo apt remove azure-cli -y && sudo apt autoremove -y && \
 	curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 WORKDIR $WORKDIR
