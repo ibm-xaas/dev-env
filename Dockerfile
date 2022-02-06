@@ -183,4 +183,9 @@ RUN set -ex && \
 	sudo ./aws/install && \
 	rm -f awscliv2.zip
 
+# azure cli
+RUN set -ex && \
+	cd ${HOME} && \
+	curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 WORKDIR $WORKDIR
