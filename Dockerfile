@@ -191,4 +191,9 @@ RUN set -ex && \
 	sudo apt remove azure-cli -y && sudo apt autoremove -y && \
 	curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
+# terraform-docs
+RUN set -ex && \
+	cd ${HOME} && \
+	go install github.com/terraform-docs/terraform-docs@latest
+
 WORKDIR $WORKDIR
