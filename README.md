@@ -33,6 +33,7 @@ Please install the items below:
 * pre-commit latest
 * terraform-docs latest
 * tfsec latest
+* terraform-linters latest
 
 ![image](https://user-images.githubusercontent.com/67604276/151308353-6a7bc34c-6ab1-404e-96b1-eb4738307c09.png)
 

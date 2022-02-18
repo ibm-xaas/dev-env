@@ -201,4 +201,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
 
+# terraform-linters
+RUN set -ex && \
+	cd ${HOME} && \
+	curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
 WORKDIR $WORKDIR
