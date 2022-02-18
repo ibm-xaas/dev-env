@@ -196,4 +196,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go install github.com/terraform-docs/terraform-docs@latest
 
+# tfsec
+RUN set -ex && \
+	cd ${HOME} && \
+	go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
+
 WORKDIR $WORKDIR
