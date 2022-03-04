@@ -104,13 +104,7 @@ RUN set -ex && \
 RUN set -ex && \
 	cd ${HOME} && \
 	curl -sL https://ibm.biz/idt-installer | bash && \
-	ibmcloud plugin install vpc-infrastructure -f && \
-	ibmcloud plugin install cloud-object-storage -f && \
-	ibmcloud plugin install key-protect -f && \
-	ibmcloud plugin install tke -f && \
-	ibmcloud plugin install container-service -f && \
-	ibmcloud plugin install container-registry -f && \
-	ibmcloud plugin install observe-service -f && \
+	ibmcloud plugin install --all -f && \
 	# docker-compose 1.25.5
 	sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
