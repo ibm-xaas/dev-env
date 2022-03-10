@@ -200,4 +200,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
+# detect-secret
+RUN set -ex && \
+	cd ${HOME} && \
+	pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"
+
 WORKDIR $WORKDIR
