@@ -205,4 +205,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"
 
+# checkov
+RUN set -ex && \
+	cd ${HOME} && \
+	pip install --upgrade checkov
+
 WORKDIR $WORKDIR
