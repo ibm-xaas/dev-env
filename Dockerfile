@@ -49,8 +49,8 @@ RUN set -ex && \
 	apt autoremove -y && \
 	apt clean -y && \
 	rm -rf /var/lib/apt/lists/* && \
-	echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
-	chmod 0440 /etc/sudoers.d/$USERNAME
+	echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \  # pragma: allowlist secret
+chmod 0440 /etc/sudoers.d/$USERNAME
 
 # set environmental variables
 USER $USERNAME
