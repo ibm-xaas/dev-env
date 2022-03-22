@@ -1,3 +1,4 @@
+[![pre-commit](https://github.com/ibm-xaas/dev-env/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/ibm-xaas/dev-env/actions/workflows/pre-commit.yaml)
 [![Docker](https://github.com/ibm-xaas/dev-env/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/ibm-xaas/dev-env/actions/workflows/docker-publish.yml)
 
 # dev-env
@@ -44,10 +45,10 @@ Please install the items below:
 ubuntu@ubuntu-jenkins:/voljenkins/test/github/dev-env$ docker-compose run dev-env
 ubuntu@57e2d9ce6b3a:/dev-env$
 ubuntu@0519f2c1c374:/dev-env$ k version
-Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.7", GitCommit:"1f86634ff08f37e54e8bfcd86bc90b61c98f84d4", GitTreeState:"clean", BuildDate:"2021-11-17T14:41:19Z", GoVersion:"go1.16.10", Compiler:"gc", Platform:"linux/amd64"}
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.7", GitCommit:"1f86634ff08f37e54e8bfcd86bc90b61c98f84d4", GitTreeState:"clean", BuildDate:"2021-11-17T14:41:19Z", GoVersion:"go1.16.10", Compiler:"gc", Platform:"linux/amd64"} # pragma: allowlist secret
 The connection to the server localhost:8080 was refused - did you specify the right host or port?
 ubuntu@0519f2c1c374:/dev-env$ helm version
-version.BuildInfo{Version:"v3.7.2", GitCommit:"663a896f4a815053445eec4153677ddc24a0a361", GitTreeState:"clean", GoVersion:"go1.16.10"}
+version.BuildInfo{Version:"v3.7.2", GitCommit:"663a896f4a815053445eec4153677ddc24a0a361", GitTreeState:"clean", GoVersion:"go1.16.10"} # pragma: allowlist secret
 ubuntu@0519f2c1c374:/dev-env$ terraform version
 Terraform v1.1.4
 on linux_amd64
