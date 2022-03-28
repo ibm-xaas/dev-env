@@ -205,4 +205,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"
 
+# envconsul
+RUN set -ex && \
+	cd ${HOME} && \
+	go install github.com/hashicorp/envconsul@latest
+
 WORKDIR $WORKDIR
