@@ -210,4 +210,9 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go install github.com/hashicorp/envconsul@latest
 
+# consul-template
+RUN set -ex && \
+	cd ${HOME} && \
+	go get -u github.com/hashicorp/consul-template@latest
+
 WORKDIR $WORKDIR
