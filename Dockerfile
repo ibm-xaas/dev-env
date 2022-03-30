@@ -26,6 +26,7 @@ RUN set -ex && \
 	libreadline-dev \
 	libsqlite3-dev \
 	curl \
+	sudo \
 	wget && \
 	wget https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
 	sudo apt-key add hashicorp.gpg && \
@@ -47,8 +48,7 @@ RUN set -ex && \
 	expect \
 	nmap \
 	traceroute \
-	tcpdump \
-	sudo && \
+	tcpdump && \
 	apt-get upgrade -y \
 	e2fsprogs \
 	libgcrypt20 \
