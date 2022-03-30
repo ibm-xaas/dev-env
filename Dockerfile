@@ -13,7 +13,8 @@ ENV WORKDIR=/dev-env
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Central
 RUN set -ex && \
-	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
+	curl -fsSL https://apt.releases.hashicorp.com/gpg -o hashcorp.gpg && \
+	sudo apt-key add hashicorp.gpg && \
 	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
 	apt-get update && \
 	apt-get install -y \
