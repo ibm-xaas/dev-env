@@ -13,9 +13,6 @@ ENV WORKDIR=/dev-env
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Central
 RUN set -ex && \
-	wget https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
-	sudo apt-key add hashicorp.gpg && \
-	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" && \
 	apt-get update && \
 	apt-get install -y \
 	tzdata \
@@ -28,10 +25,15 @@ RUN set -ex && \
 	libffi-dev \
 	libreadline-dev \
 	libsqlite3-dev \
+	curl \
+	wget && \
+	wget https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
+	sudo apt-key add hashicorp.gpg && \
+	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" && \
+	apt-get update && \
+	apt-get install -y \
 	consul-k8s \
 	vault \
-	curl \
-	wget \
 	jq \
 	vim \
 	unzip \
