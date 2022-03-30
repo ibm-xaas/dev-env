@@ -13,6 +13,8 @@ ENV WORKDIR=/dev-env
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ America/Central
 RUN set -ex && \
+	curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
+	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
 	apt-get update && \
 	apt-get install -y \
 	tzdata \
@@ -25,6 +27,8 @@ RUN set -ex && \
 	libffi-dev \
 	libreadline-dev \
 	libsqlite3-dev \
+	consul-k8s \
+	vault \
 	curl \
 	wget \
 	jq \
