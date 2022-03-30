@@ -18,6 +18,7 @@ services:
       - ~/.ssh:/home/ubuntu/.ssh:ro
       - .:/dev-env
       - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.gitconfig:/home/ubuntu/.gitconfig:ro
     environment:
       IBMCLOUD_API_KEY: "$IBMCLOUD_API_KEY"
     working_dir: /dev-env
