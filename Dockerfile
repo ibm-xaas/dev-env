@@ -15,6 +15,7 @@ ENV TZ America/Central
 RUN set -ex && \
 	apt-get update && \
 	apt-get install -y \
+	software-properties-common \
 	tzdata \
 	git \
 	mercurial \
@@ -26,7 +27,15 @@ RUN set -ex && \
 	libreadline-dev \
 	libsqlite3-dev \
 	curl \
-	wget \
+	sudo \
+	wget && \
+	curl -fsSL https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
+	sudo apt-key add hashicorp.gpg && \
+	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" && \
+	apt-get update && \
+	apt-get install -y \
+	consul-k8s \
+	vault \
 	jq \
 	vim \
 	unzip \
@@ -40,8 +49,7 @@ RUN set -ex && \
 	expect \
 	nmap \
 	traceroute \
-	tcpdump \
-	sudo && \
+	tcpdump && \
 	apt-get upgrade -y \
 	e2fsprogs \
 	libgcrypt20 \
