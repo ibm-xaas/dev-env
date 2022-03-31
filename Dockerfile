@@ -34,6 +34,7 @@ RUN set -ex && \
 	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" && \
 	apt-get update && \
 	apt-get install -y \
+	consul \
 	consul-k8s \
 	vault \
 	jq \
