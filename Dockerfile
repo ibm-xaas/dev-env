@@ -224,4 +224,11 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go get -u github.com/hashicorp/consul-template@latest
 
+# go pre-commit hook
+RUN set -ex && \
+	cd ${HOME} && \
+	go install golang.org/x/lint/golint@latest \
+	go install golang.org/x/tools/cmd/goimports@latest \
+	go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+
 WORKDIR $WORKDIR
