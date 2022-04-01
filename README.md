@@ -38,6 +38,7 @@ Please install the items below:
 * kubectl client and helm v3
 * detect-secret latest
 * consul and vault latest
+* golint, goimports, gocyclo latest
 
 ![image](https://user-images.githubusercontent.com/67604276/151308353-6a7bc34c-6ab1-404e-96b1-eb4738307c09.png)
 
