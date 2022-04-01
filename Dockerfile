@@ -227,8 +227,8 @@ RUN set -ex && \
 # go pre-commit hook
 RUN set -ex && \
 	cd ${HOME} && \
-	go install golang.org/x/lint/golint@latest \
-	go install golang.org/x/tools/cmd/goimports@latest \
+	go install golang.org/x/lint/golint@latest && \
+	go install golang.org/x/tools/cmd/goimports@latest && \
 	go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 
 WORKDIR $WORKDIR
