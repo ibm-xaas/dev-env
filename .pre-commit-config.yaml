@@ -20,3 +20,31 @@ repos:
         # when "--baseline" with "--use-all-plugins", pre-commit scan with all available plugins
         # add "--fail-on-non-audited" to fail pre-commit for unaudited potential secrets
         args: [--baseline, .secrets.baseline, --use-all-plugins]
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: v0.5.0
+    hooks:
+      - id: go-fmt
+      - id: go-lint
+      - id: go-imports
+      - id: go-cyclo
+        args: [-over=15]
+      - id: validate-toml
+      - id: no-go-testing
+      - id: go-unit-tests
+      - id: go-build
+      - id: go-mod-tidy
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.17
+    hooks:
+      - id: tflint
+        args:
+          - "--module"
+          - "--deep"
+          - "--config=.tflint.hcl"
+      - id: terraform-validate
+      - id: terraform-fmt
+  # tfsec
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.64.0
+    hooks:
+      - id: terraform_tfsec
