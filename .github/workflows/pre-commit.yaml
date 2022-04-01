@@ -14,4 +14,7 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: "^1.17"
+      - run: |
+          go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
+          go install github.com/terraform-docs/terraform-docs@latest
       - uses: pre-commit/action@v2.0.3
