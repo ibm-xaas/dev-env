@@ -11,6 +11,11 @@ Please install the items below:
 * docker
 * docker-compose
 
+## How to run
+```
+$ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD_API_KEY>
+$ docker-compose run dev-env
+```
 ## Available Tools
 * ubuntu focal (20.04) base
 * terraform latest and tfenv
