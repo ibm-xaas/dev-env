@@ -236,4 +236,10 @@ RUN set -ex && \
 	cd ${HOME} && \
 	pip install --upgrade pylint
 
+# artifactory cli: jf
+RUN set -ex && \
+	cd ${HOME} && \
+	curl -fL https://getcli.jfrog.io/v2-jf | sh && \
+	sudo mv jf /usr/local/bin/
+
 WORKDIR $WORKDIR
