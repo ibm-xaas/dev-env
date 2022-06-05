@@ -68,12 +68,12 @@ ENV HOME "/home/${USERNAME}"
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
 
-# # golang 1.17.6
+# # golang 1.18.3
 RUN set -ex && \
 	cd ${HOME} && \
-	wget -q https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
-	sudo tar -C /usr/local -xvzf go1.17.6.linux-amd64.tar.gz && \
-	rm go1.17.6.linux-amd64.tar.gz && \
+	wget -q https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz && \
+	sudo tar -C /usr/local -xvzf go1.18.3.linux-amd64.tar.gz && \
+	rm go1.18.3.linux-amd64.tar.gz && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
