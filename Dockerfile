@@ -68,12 +68,12 @@ ENV HOME "/home/${USERNAME}"
 ENV LC_ALL "C.UTF-8"
 ENV LANG "en_US.UTF-8"
 
-# # golang 1.17.6
+# # golang 1.18.3
 RUN set -ex && \
 	cd ${HOME} && \
-	wget -q https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz && \
-	sudo tar -C /usr/local -xvzf go1.17.6.linux-amd64.tar.gz && \
-	rm go1.17.6.linux-amd64.tar.gz && \
+	wget -q https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz && \
+	sudo tar -C /usr/local -xvzf go1.18.3.linux-amd64.tar.gz && \
+	rm go1.18.3.linux-amd64.tar.gz && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -111,12 +111,13 @@ RUN set -ex && \
 
 # ibmcloud cli client
 # ibmcloud cli client installs docker
+# docker-compose v2.6.0
 RUN set -ex && \
 	cd ${HOME} && \
 	curl -sL https://ibm.biz/idt-installer | bash && \
-	ibmcloud plugin install --all -f && \
-	# docker-compose 1.25.5
-	sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+	ibmcloud plugin repo-plugins && \
+	#ibmcloud plugin install --all -f && \ # https://github.com/IBM-Cloud/ibm-cloud-developer-tools/issues/186
+	sudo curl -L "https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
 
 # pyenv
@@ -220,10 +221,14 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go install github.com/hashicorp/envconsul@latest
 
-# consul-template
+# consul-template 0.29.0
 RUN set -ex && \
 	cd ${HOME} && \
-	go get -u github.com/hashicorp/consul-template@latest
+	wget -q https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_amd64.zip && \
+	unzip consul-template_0.29.0_linux_amd64.zip && \
+	sudo mv consul-template /usr/local/bin/consul-template && \
+	sudo chmod +x /usr/local/bin/consul-template && \
+	rm -f consul-template_0.29.0_linux_amd64.zip
 
 # go pre-commit hook
 RUN set -ex && \
