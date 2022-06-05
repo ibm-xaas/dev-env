@@ -221,10 +221,14 @@ RUN set -ex && \
 	cd ${HOME} && \
 	go install github.com/hashicorp/envconsul@latest
 
-# consul-template
+# consul-template 0.29.0
 RUN set -ex && \
 	cd ${HOME} && \
-	go get -u github.com/hashicorp/consul-template@latest
+	wget -q https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_amd64.zip && \
+	unzip consul-template_0.29.0_linux_amd64.zip && \
+	sudo mv consul-template /usr/local/bin/consul-template && \
+	sudo chmod +x /usr/local/bin/consul-template && \
+	rm -f consul-template_0.29.0_linux_amd64.zip
 
 # go pre-commit hook
 RUN set -ex && \
