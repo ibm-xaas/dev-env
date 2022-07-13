@@ -248,4 +248,8 @@ RUN set -ex && \
 	curl -fL https://getcli.jfrog.io/v2-jf | sh && \
 	sudo mv jf /usr/local/bin/
 
+# syft cli
+RUN set -ex && \
+	curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /usr/local/bin
+
 WORKDIR $WORKDIR
