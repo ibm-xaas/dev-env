@@ -254,6 +254,6 @@ RUN set -ex && \
 
 # ubuntu 22.04 ssh rsa does not work; let's add temporary workaround
 RUN set =ex && \
-	sudo echo 'PubkeyAcceptedKeyTypes +ssh-rsa' >> /etc/ssh/ssh_config
+	echo 'PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config
 
 WORKDIR $WORKDIR
