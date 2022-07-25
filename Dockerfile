@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ARG USERNAME=ubuntu
 ARG USER_UID=1000
@@ -193,7 +193,6 @@ RUN set -ex && \
 # azure cli
 RUN set -ex && \
 	cd ${HOME} && \
-	sudo apt remove azure-cli -y && sudo apt autoremove -y && \
 	curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # terraform-docs
