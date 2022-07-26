@@ -17,7 +17,7 @@ $ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD_API_KEY>
 $ docker-compose run dev-env
 ```
 ## Available Tools
-* ubuntu focal (20.04) base
+* ubuntu focal (22.04) base
 * terraform latest and tfenv
 * terragrunt latest and tgenv
 * packer latest and pkenv
