@@ -31,7 +31,7 @@ RUN set -ex && \
 	wget && \
 	curl -fsSL https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
 	sudo apt-key add hashicorp.gpg && \
-	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" && \
+	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
 	apt-get update && \
 	apt-get install -y \
 	boundary \
@@ -255,6 +255,8 @@ RUN set -ex && \
 # ubuntu 22.04 ssh rsa does not work for pakcer-provisioner-ansible; let's add temporary workaround
 RUN set -ex && \
 	echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
-	echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config
+	echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
+	sudo usermod -aG docker ${USERNAME} && \
+	sudo usermod -aG boundary ${USERNAME}
 
 WORKDIR $WORKDIR
