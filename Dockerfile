@@ -260,6 +260,6 @@ RUN set -ex && \
 	echo '    PubkeyAcceptedKeyTypes +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
 	echo '    HostKeyAlgorithms +ssh-rsa' | sudo tee -a /etc/ssh/ssh_config && \
 	sudo usermod -aG docker ${USERNAME} && \
-	sudo usermod -aG boundary ${USERNAME}
+	sudo usermod -aG "$(stat -c %G /var/run/docker.sock)" ${USERNAME}
 
 WORKDIR $WORKDIR
