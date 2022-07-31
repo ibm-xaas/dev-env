@@ -117,7 +117,7 @@ RUN set -ex && \
 	cd ${HOME} && \
 	curl -sL https://ibm.biz/idt-installer | bash && \
 	#ibmcloud plugin repo-plugins && \
-	#ibmcloud plugin install --all -f 
+	#ibmcloud plugin install --all -f
 	#ibmcloud plugin install --all -f && \
 	sudo curl -L "https://github.com/docker/compose/releases/download/v2.8.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
