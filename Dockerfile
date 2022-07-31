@@ -31,12 +31,13 @@ RUN set -ex && \
 	wget && \
 	curl -fsSL https://apt.releases.hashicorp.com/gpg -o hashicorp.gpg && \
 	sudo apt-key add hashicorp.gpg && \
-	sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+	#sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+	sudo apt-add-repository "deb [arch=$(dpkg-architecture -q DEB_BUILD_ARCH)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
 	apt-get update && \
 	apt-get install -y \
 	boundary \
 	consul \
-	consul-k8s \
+	#consul-k8s \
 	vault \
 	jq \
 	vim \
@@ -71,9 +72,9 @@ ENV LANG "en_US.UTF-8"
 # # golang 1.18.3
 RUN set -ex && \
 	cd ${HOME} && \
-	wget -q https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz && \
-	sudo tar -C /usr/local -xvzf go1.18.3.linux-amd64.tar.gz && \
-	rm go1.18.3.linux-amd64.tar.gz && \
+	wget -q "https://dl.google.com/go/go1.18.3.linux-$(dpkg-architecture -q DEB_BUILD_ARCH).tar.gz" && \
+	sudo tar -C /usr/local -xvzf "go1.18.3.linux-$(dpkg-architecture -q DEB_BUILD_ARCH).tar.gz" && \
+	rm "go1.18.3.linux-$(dpkg-architecture -q DEB_BUILD_ARCH).tar.gz" && \
 	mkdir -p ${HOME}/go && \
 	sudo chown ${USER_UID}:${USER_GID} ${HOME}/go && \
 	echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -111,13 +112,14 @@ RUN set -ex && \
 
 # ibmcloud cli client
 # ibmcloud cli client installs docker
-# docker-compose v2.6.0
+# docker-compose v2.8.0
 RUN set -ex && \
 	cd ${HOME} && \
 	curl -sL https://ibm.biz/idt-installer | bash && \
-	ibmcloud plugin repo-plugins && \
-	ibmcloud plugin install --all -f && \
-	sudo curl -L "https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+	#ibmcloud plugin repo-plugins && \
+	#ibmcloud plugin install --all -f 
+	#ibmcloud plugin install --all -f && \
+	sudo curl -L "https://github.com/docker/compose/releases/download/v2.8.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 	sudo chmod +x /usr/local/bin/docker-compose
 
 # pyenv
@@ -148,14 +150,15 @@ RUN set -ex && \
 RUN echo 'alias k="kubectl"' >> ~/.bashrc
 
 RUN set -ex && \
-	sudo curl -L https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-amd64 -o /usr/local/bin/goss && \
+	sudo curl -L "https://github.com/aelsabbahy/goss/releases/latest/download/goss-linux-$(dpkg-architecture -q DEB_BUILD_ARCH)" -o /usr/local/bin/goss && \
 	sudo chmod +rx /usr/local/bin/goss && \
 	cd ${HOME} && \
 	mkdir -p ${HOME}/.packer.d/plugins && \
 	cd ${HOME}/.packer.d/plugins && \
-	wget -q https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.2/packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
-	unzip packer-provisioner-goss-v3.1.2-linux-amd64.zip && \
-	rm -f packer-provisioner-goss-v3.1.2-linux-amd64.zip
+	# v3.1.3 for arm64
+	wget -q "https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v3.1.3/packer-provisioner-goss-v3.1.3-linux-$(dpkg-architecture -q DEB_BUILD_ARCH).zip" && \
+	unzip "packer-provisioner-goss-v3.1.3-linux-$(dpkg-architecture -q DEB_BUILD_ARCH).zip" && \
+	rm -f "packer-provisioner-goss-v3.1.3-linux-$(dpkg-architecture -q DEB_BUILD_ARCH).zip"
 
 # git@github.com:ibm-xaas/packer-provisioner-comment.git
 
@@ -223,11 +226,11 @@ RUN set -ex && \
 # consul-template 0.29.0
 RUN set -ex && \
 	cd ${HOME} && \
-	wget -q https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_amd64.zip && \
-	unzip consul-template_0.29.0_linux_amd64.zip && \
+	wget -q "https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_$(dpkg-architecture -q DEB_BUILD_ARCH).zip" && \
+	unzip "consul-template_0.29.0_linux_$(dpkg-architecture -q DEB_BUILD_ARCH).zip" && \
 	sudo mv consul-template /usr/local/bin/consul-template && \
 	sudo chmod +x /usr/local/bin/consul-template && \
-	rm -f consul-template_0.29.0_linux_amd64.zip
+	rm -f "consul-template_0.29.0_linux_$(dpkg-architecture -q DEB_BUILD_ARCH).zip"
 
 # go pre-commit hook
 RUN set -ex && \
