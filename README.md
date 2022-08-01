@@ -3,7 +3,10 @@
 
 # dev-env
 ##
-tested in Ubuntu 18.04 and macOS Big Sur
+tested in Ubuntu 18.04..22.04 and macOS Big Sur..Monterey
+Host:
+- linux/amd64
+- linux/arm64
 
 ## PREP
 
