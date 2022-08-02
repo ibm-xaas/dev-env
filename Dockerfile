@@ -132,8 +132,8 @@ RUN echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 #
 RUN set -ex && \
 	curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash && \
-	pyenv install 3.9.10 && \
-	pyenv global 3.9.10 && \
+	pyenv install 3.10.5 && \
+	pyenv global 3.10.5 && \
 	pip install --upgrade pip && \
 	# Ansible
 	pip install ansible && \
