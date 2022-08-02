@@ -92,13 +92,15 @@ RUN set -ex && \
 ENV PATH=${HOME}/.tfenv/bin:$PATH
 # tgenv
 RUN set -ex && \
-	git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && \
-	echo 'export PATH=$HOME/.tgenv/bin:$PATH' >> ~/.bashrc
+	git clone https://github.com/ibm-xaas/tgenv.git ~/.tgenv && \
+	echo 'export PATH=$HOME/.tgenv/bin:$PATH' >> ~/.bashrc && \
+	echo 'export TGENV_ARCH=$(dpkg-architecture -q DEB_BUILD_ARCH)' >> ~/.bashrc
 ENV PATH=${HOME}/.tgenv/bin:$PATH
 # pkenv
 RUN set -ex && \
-	git clone https://github.com/iamhsa/pkenv.git ~/.pkenv && \
-	echo 'export PATH=$HOME/.pkenv/bin:$PATH' >> ~/.bashrc
+	git clone https://github.com/ibm-xaas/pkenv.git ~/.pkenv && \
+	echo 'export PATH=$HOME/.pkenv/bin:$PATH' >> ~/.bashrc && \
+	echo 'export PKENV_ARCH=$(dpkg-architecture -q DEB_BUILD_ARCH)' >> ~/.bashrc
 ENV PATH=${HOME}/.pkenv/bin:$PATH
 
 RUN set -ex && \
@@ -116,11 +118,9 @@ RUN set -ex && \
 RUN set -ex && \
 	cd ${HOME} && \
 	curl -sL https://ibm.biz/idt-installer | bash && \
-	#ibmcloud plugin repo-plugins && \
-	#ibmcloud plugin install --all -f
-	#ibmcloud plugin install --all -f && \
 	sudo curl -L "https://github.com/docker/compose/releases/download/v2.8.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
-	sudo chmod +x /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose || \
+	ibmcloud plugin install --all -f
 
 # pyenv
 ENV PYENV_ROOT "${HOME}/.pyenv"
