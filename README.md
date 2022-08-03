@@ -23,16 +23,16 @@ $ export IBMCLOUD_API_KEY=<YOUR IBMCLOUD_API_KEY>
 $ docker-compose run dev-env
 ```
 ## Available Tools
-* ubuntu focal (22.04) base
+* ubuntu jammy (22.04) base
 * terraform latest and tfenv
 * terragrunt latest and tgenv
 * packer latest and pkenv
-* python 3.9 or later and pyenv, then pipenv
+* python 3.10 or later and pyenv, then pipenv
 * ansible latest
 * docker-ce and docker-compose
 * ibmcloud cli latest
 * qemu and qemu-tools
-* golang 1.17 or later
+* golang 1.18 or later
 * docker-in-docker
 * packer plugins:
   * [packer-provisioner-goss](https://github.com/YaleUniversity/packer-provisioner-goss) : the details on [goss](https://github.com/aelsabbahy/goss)
